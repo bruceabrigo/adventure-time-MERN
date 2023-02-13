@@ -24,7 +24,7 @@ const cardContainerStyle = {
 const CharacterIndex = (props) => { //props is msgAlert that is passed from App.js
     const [characters, setCharacters] = useState(null)
     const [error, setError] = useState(false)
-    console.log('these are the pets in index', characters)
+    console.log('these are the characters in index', characters)
     // pull the message alert (msgAlert) from props
     const { msgAlert } = props
 
@@ -34,8 +34,8 @@ const CharacterIndex = (props) => { //props is msgAlert that is passed from App.
             .then(res => setCharacters(res.data.characters))
             .catch(err => {
                 msgAlert({
-                    heading: 'Error getting pets',
-                    message: 'Could not find any pets',
+                    heading: 'Error getting characters',
+                    message: 'Could not find any characters',
                     variant: 'danger'
                 })
                 setError(true)
@@ -58,11 +58,12 @@ const CharacterIndex = (props) => { //props is msgAlert that is passed from App.
     // once we have an array of pets, loop over them
     // produce one card for every pet
     const characterChards = characters.map(character => (
-        <Card key ={character.id }style={{ width: '30%', margin: 5 }}>
+        <Card key ={character._id }style={{ width: '30%', margin: 5 }}>
             <Card.Header>{ character.name }</Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <Link to={`/characters/${character.id}`} className="btn btn-info">View { character.name }</Link>
+                    <p>Voice By: {character.voicedBy}</p>
+                    <Link to={`/characters/${character._id}`} className="btn btn-info">View { character.name }</Link>
                 </Card.Text>
                 {/* this is a ternary */}
                 {/* this is a ternary */}

@@ -5,7 +5,7 @@ export const getAllCharacters = () => {
     return axios(`${apiUrl}/characters`)
 }
 
-export const getOnePet = (id) => {
+export const getOneCharacter = (id) => {
     return axios(`${apiUrl}/characters/${id}`)
 }
 
