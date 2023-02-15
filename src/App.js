@@ -14,6 +14,8 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CharIndex from './components/character/CharIndex'
 import ShowOneCharacter from './components/character/ShowCharacter'
+import CreateCharacter from './components/character/CreateCharacter'
+
 const App = () => {
 
   const [user, setUser] = useState(null)
@@ -73,6 +75,14 @@ const App = () => {
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
           />
+		  <Route
+		  	path='/create-character'
+			element={
+				<RequireAuth user={user}>
+					<CreateCharacter msgAlert={msgAlert} user={user} />
+				</RequireAuth>
+			}
+		  />
 		  <Route
 		  	path='characters/:id'
 			element={<ShowOneCharacter user={user} msgAlert={msgAlert}/>}
